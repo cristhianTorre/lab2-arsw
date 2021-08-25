@@ -5,9 +5,9 @@ import java.util.concurrent.Semaphore;
 
 /**
  * Un galgo que puede correr en un carril
- * 
+ *
  * @author rlopez
- * 
+ *
  */
 public class Galgo extends Thread {
 	private int paso;
@@ -38,7 +38,7 @@ public class Galgo extends Thread {
 				if (ubicacion==1){
 					regl.setGanador(this.getName());
 				}
-				
+
 			}
 		}
 	}

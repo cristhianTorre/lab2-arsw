@@ -87,4 +87,8 @@ public class MainCanodromo {
 
     }
 
+    public static RegistroLlegada getMonitor(){
+        return reg;
+    }
+
 }

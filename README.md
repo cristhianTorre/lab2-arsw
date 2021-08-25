@@ -14,10 +14,24 @@ Creación, puesta en marcha y coordinación de hilos.
 
 1. Revise el programa “primos concurrentes” (en la carpeta parte1), dispuesto en el paquete edu.eci.arsw.primefinder. Este es un programa que calcula los números primos entre dos intervalos, distribuyendo la búsqueda de los mismos entre hilos independientes. Por ahora, tiene un único hilo de ejecución que busca los primos entre 0 y 30.000.000. Ejecútelo, abra el administrador de procesos del sistema operativo, y verifique cuantos núcleos son usados por el mismo.
 
+- Luego de Ejecutar la clase Main del programa, al abrir Java VisualVM (en este caso el comando "top" de linux), podemos observar que el consumo de recursos es muy alto, al principio el programa consumió poco porcentaje (menos del 50%) de la CPU, dando como resultado un consumo muy alto de recursos, pero a medida que se ejecuta este va creciendo llegando a 80%.
+![](./img/media/image3.png)
+![](./img/media/image4.png)
+
 2. Modifique el programa para que, en lugar de resolver el problema con un solo hilo, lo haga con tres, donde cada uno de éstos hará la tarcera parte del problema original. Verifique nuevamente el funcionamiento, y nuevamente revise el uso de los núcleos del equipo.
+
+- Primero, modificamos el programa de la siguiente forma, implementamos dos hilos demás, y cambiando el rango de los mismos, siendo ahora, el primer hilo pft1 que encuentra los números primos desde el número 0 al número 10000000, el segundo hilo pft2 que encuentra los números primos desde el número 10000000 al número 20000000 y el tercer hilo pft3 que encuentra los números primos desde el número 20000000 al número 30000000, quedando la clase Main de la siguiente forma.
+
+![](./img/media/image5.png)
+![](./img/media/image6.png)
+
+- Ahora despues de aver ejecutado el programa vemos el consumo de CPU es menor que la primera vez, esta vez en su tope llego a un 50%.
 
 3. Lo que se le ha pedido es: debe modificar la aplicación de manera que cuando hayan transcurrido 5 segundos desde que se inició la ejecución, se detengan todos los hilos y se muestre el número de primos encontrados hasta el momento. Luego, se debe esperar a que el usuario presione ENTER para reanudar la ejecución de los mismo.
 
+- Primero debemos importar librerias como `BufferedReader` y `InputStreamReader` Los cuales nos permiten ejecutar y suspender los hilos, ranudandolos y suspendiendolos para realizar la lectura del selto de linea registrado por el teclado.
+
+![](./img/media/image7.png)
 
 
 ### Parte II 
@@ -63,4 +77,8 @@ Parte III
     cuando se haga clic en ‘Stop’, todos los hilos de los galgos
     deberían dormirse, y cuando se haga clic en ‘Continue’ los mismos
     deberían despertarse y continuar con la carrera. Diseñe una solución que permita hacer esto utilizando los mecanismos de sincronización con las primitivas de los Locks provistos por el lenguaje (wait y notifyAll).
+	
+![](./img/media/image8.png)
+![](./img/media/image10.png)
+![](./img/media/image9.png)
 
