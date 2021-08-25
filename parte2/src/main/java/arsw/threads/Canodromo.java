@@ -33,6 +33,8 @@ public class Canodromo extends JFrame {
 	private JButton butStart = new JButton("Start");
 	private JButton butStop = new JButton("Stop");
 	private JButton butContinue = new JButton("Continue");
+
+	private boolean isContinue = false;
 	/**
 	 * Constructor
 	 * 
@@ -143,20 +145,16 @@ public class Canodromo extends JFrame {
 	 * 
 	 * @param action
 	 */
-	public void setStopAction(ActionListener action) {
-		butStop.addActionListener(action);
-	}
+	public void setStopAction(ActionListener action) {butStop.addActionListener(action);}
 
 	/**
 	 * Asocia una accion con el boton de continuar
 	 * 
 	 * @param action
 	 */
-	public void setContinueAction(ActionListener action){
-		butContinue.addActionListener(action);
-	}
+	public void setContinueAction(ActionListener action){butContinue.addActionListener(action);}
 	
 	public void winnerDialog(String winner,int total) {
             JOptionPane.showMessageDialog(null, "El ganador fue:" + winner + " de un total de " + total);
-        }	
+        }
 }

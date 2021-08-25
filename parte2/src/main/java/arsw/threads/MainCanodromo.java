@@ -36,11 +36,20 @@ public class MainCanodromo {
                                     galgos[i] = new Galgo(can.getCarril(i), "" + i, reg);
                                     //inicia los hilos
                                     galgos[i].start();
-
                                 }
-                               
-				can.winnerDialog(reg.getGanador(),reg.getUltimaPosicionAlcanzada() - 1); 
+                                esperar();
+                                can.winnerDialog(reg.getGanador(), reg.getUltimaPosicionAlcanzada() - 1);
                                 System.out.println("El ganador fue:" + reg.getGanador());
+
+                            }
+                            public void esperar(){
+                                for (int i = 0; i < can.getNumCarriles(); i++) {
+                                    try {
+                                        galgos[i].join();
+                                    } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                }
                             }
                         }.start();
 
@@ -52,6 +61,9 @@ public class MainCanodromo {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        for(int i = 0;i<can.getNumCarriles();i++){
+                            galgos[i].pausa();
+                        }
                         System.out.println("Carrera pausada!");
                     }
                 }
@@ -61,6 +73,13 @@ public class MainCanodromo {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        for(int i = 0;i<can.getNumCarriles();i++){
+                            try {
+                                galgos[i].seguir();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
                         System.out.println("Carrera reanudada!");
                     }
                 }
